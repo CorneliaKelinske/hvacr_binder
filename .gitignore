@@ -34,4 +34,4 @@ npm-debug.log
 
 *.plt
 *.plt.hash
-
+.elixir_ls

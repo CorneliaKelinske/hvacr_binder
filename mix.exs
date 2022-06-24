@@ -11,7 +11,6 @@ defmodule HvacrBinder.MixProject do
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
       deps: deps(),
-
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
         dialyzer: :test,
@@ -71,7 +70,7 @@ defmodule HvacrBinder.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
 
-       # Tooling
+      # Tooling
       {:excoveralls, "~> 0.10", only: :test},
       {:ex_check, "~> 0.14.0", only: :test, runtime: false},
       {:credo, "~> 1.5", only: :test, runtime: false},
@@ -79,8 +78,6 @@ defmodule HvacrBinder.MixProject do
       {:dialyxir, "~> 1.0", only: :test, runtime: false},
       {:doctor, "~> 0.18.0", only: :test}
     ]
-
-
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
