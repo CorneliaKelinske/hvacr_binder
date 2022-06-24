@@ -32,3 +32,6 @@ hvacr_binder-*.tar
 npm-debug.log
 /assets/node_modules/
 
+*.plt
+*.plt.hash
+.elixir_ls

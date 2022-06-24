@@ -10,7 +10,27 @@ defmodule HvacrBinder.MixProject do
       compilers: [:gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        dialyzer: :test,
+        credo: :test,
+        check: :test,
+        format: :test,
+        doctor: :test,
+        docs: :test,
+        "coveralls.html": :test,
+        "coveralls.json": :test,
+        "coveralls.lcov": :test
+      ],
+      dialyzer: [
+        plt_add_apps: [:ex_unit, :mix],
+        list_unused_filters: true,
+        plt_local_path: "dialyzer",
+        plt_core_path: "dialyzer",
+        ignore_warnings: ".dialyzer-ignore.exs",
+        flags: [:unmatched_returns, :no_improper_lists]
+      ]
     ]
   end
 
@@ -48,7 +68,15 @@ defmodule HvacrBinder.MixProject do
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
-      {:plug_cowboy, "~> 2.5"}
+      {:plug_cowboy, "~> 2.5"},
+
+      # Tooling
+      {:excoveralls, "~> 0.10", only: :test},
+      {:ex_check, "~> 0.14.0", only: :test, runtime: false},
+      {:credo, "~> 1.5", only: :test, runtime: false},
+      {:blitz_credo_checks, "~> 0.1.5", only: :test, runtime: false},
+      {:dialyxir, "~> 1.0", only: :test, runtime: false},
+      {:doctor, "~> 0.18.0", only: :test}
     ]
   end
 
